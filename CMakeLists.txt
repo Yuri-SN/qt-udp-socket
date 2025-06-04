@@ -12,28 +12,24 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-find_package(Qt6 COMPONENTS Widgets REQUIRED)
-
+find_package(Qt6 COMPONENTS Widgets Network REQUIRED)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        udpworker.h
-        udpworker.cpp
+    main.cpp
+    MainWindow.cpp
+    MainWindow.h
+    MainWindow.ui
+    UdpDateWorker.h
+    UdpDateWorker.cpp
+    UdpStringWorker.h
+    UdpStringWorker.cpp
 )
-
 
 qt_add_executable(PreUDPsocket
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
 )
 
-
-target_link_libraries(PreUDPsocket PRIVATE Qt6::Widgets)
-
-
+target_link_libraries(PreUDPsocket PRIVATE Qt6::Widgets Qt6::Network)
 
 qt_finalize_executable(PreUDPsocket)
-
